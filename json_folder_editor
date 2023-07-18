@@ -1,0 +1,13 @@
+import os
+import json
+
+folder_path = r"C:\Users\path-to-folder" #change to the path you need 
+
+for filename in os.listdir(folder_path):
+    if filename.endswith(".json"):
+        with open(os.path.join(folder_path, filename), "r") as file:
+            lines = file.readlines()
+
+        if lines[0].startswith("//bridge"):
+            with open(os.path.join(folder_path, filename), "w") as file:
+                file.writelines(lines[1:])
